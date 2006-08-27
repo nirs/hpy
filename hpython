@@ -1,0 +1,15 @@
+#!/usr/bin/env python
+#-*- coding: utf-8 -*-
+"""Execute Hebrew Python scripts 
+
+usage: hpython FILE
+"""
+import sys
+import hpy
+
+if len(sys.argv) != 2:
+    print __doc__
+    sys.exit(1)
+
+hpy.execute(sys.argv[1])
+
