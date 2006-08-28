@@ -36,23 +36,24 @@ def translate(readline):
         result.write(' ' * (scol - position))
         position = ecol
 
-        # Handle newline token
+        # Handle indentation
         if type == token.NEWLINE:
             newline = True
             result.write(string)
             continue  
-        
-        # Handle indentation tokens
-        if type in (token.INDENT, token.DEDENT):
+        elif type == token.INDENT:
             newline = False
-            indent = ' ' * ecol
+            indent = string
             result.write(indent)
             continue
-            
-        # Handle other tokens
-        if newline:
+        elif type == token.DEDENT:
+            indent = ' ' * ecol
+            continue            
+        elif newline:
             newline = False
             result.write(indent)
+        
+        # Handle other tokens
         if type == token.NAME:
             if string in hebrew.keywords:
                 result.write(hebrew.keywords[string])

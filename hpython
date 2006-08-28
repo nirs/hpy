@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 #-*- coding: utf-8 -*-
-"""Execute Hebrew Python scripts 
+"""Execute Hebrew Python scripts
 
 usage: hpython FILE
 """
