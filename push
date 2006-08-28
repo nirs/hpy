@@ -11,10 +11,10 @@
 
 # Configuration
 
-format=tar.bz2 # see bzr help export for available formats
-user=nirs
-server=nirs.freeshell.org
-dest=html/code
+format='tar.bz2' # see bzr help export for available formats
+user='nirs'
+server='nirs.freeshell.org'
+dest='~/html/code'
 nick=`bzr nick`
 
 cleanup () {
