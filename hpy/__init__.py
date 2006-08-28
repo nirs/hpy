@@ -2,7 +2,7 @@
 """ Execute Hebrew Python scripts """
 
 __author__ = 'Nir Soffer <nirs@freeshell.org'
-__credits__ = 'Noam Raphael, Beni Cherniavksy'
+__credits__ = 'Kobi Zamir, Noam Raphael, Beni Cherniavksy'
 __version__ = '0.1.3'
 
 import codecs
@@ -10,8 +10,6 @@ import token
 import cStringIO
 
 from hpy import htokenize, hebrew
-
-DEBUG = 0
 
 def mangle(s):
     """ Return ASCII safe name for non ASCII identifier 
@@ -64,23 +62,22 @@ def translate(readline):
                 
     return result.getvalue()
 
-def printTokens(readline):
-    """ Print tokens in Hebrew Python source (for debugging) """
+def printTokens(path):
+    """ Print tokens in Hebrew Python source """
+    readline = codecs.open(path, 'r', 'utf-8').readline
     for (type, string, (srow, scol), (erow, ecol), line) \
         in htokenize.generate_tokens(readline):
-        print '%s (%d, %d): "%s"' % (token.tok_name[type], scol, ecol, string.encode('utf-8'))
+        name = token.tok_name[type]
+        print '%s (%d, %d): "%s"' % (name, scol, ecol, 
+                                     string.encode('utf-8'))
 
 def source(path):
     """ Translate Hebrew Python source at path """
-    if DEBUG: 
-        printTokens(codecs.open(path, 'r', 'utf-8').readline)
-    return translate(codecs.open(path, 'r', 'utf-8').readline)
+    readline = codecs.open(path, 'r', 'utf-8').readline
+    return translate(readline)
 
 def execute(path):
     """ Execute Hebrew Python source at path """
-    translation= source(path)
-    if DEBUG: 
-        print translation
-    code = compile(translation, path, 'exec')
+    code = compile(source(path), path, 'exec')
     sandbox = {}
     exec code in sandbox
