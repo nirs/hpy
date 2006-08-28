@@ -6,10 +6,16 @@ To write Hebrew scripts, see hpy/hebrew.py and the example scripts.
 Changes
 =======
 
+0.1.2 2005-08-28
+----------------
+
+- Finally fix indentation in translate
+- Add 99 botles of beer example
+
 0.1.1 2005-08-28
 ----------------
 
-- Fix indentation bug in tokenize
+- Fix indentation bug in translate
 - Mangle only non-ascii identifiers - allows using any existing identifier
 - Add mix example script
 - Improve hebrew keyword translation
