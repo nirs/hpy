@@ -64,7 +64,7 @@ def translate(readline):
     return result.getvalue()
 
 def printTokens(readline):
-    """ For debugging """
+    """ Print tokens in Hebrew Python source (for debugging) """
     for (type, string, (srow, scol), (erow, ecol), line) \
         in htokenize.generate_tokens(readline):
         print '%s (%d, %d): "%s"' % (token.tok_name[type], scol, ecol, string.encode('utf-8'))

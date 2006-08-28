@@ -2,6 +2,6 @@
 import os
 files = os.listdir(os.getcwd())
 
-# Hebrew Python
+# פייתון בעברית
 לכל קובץ בתוך files:
     הדפס קובץ
