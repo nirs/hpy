@@ -9,9 +9,10 @@ Changes
 0.1.3 2005-08-29
 ----------------
 
-- Add -s option to print source (Kobi)
+- Add -s option to print source (Kobi Zamir)
 - Add -t option to print tokens
-- printTokens accept file path
+- Change printTokens to accept file path
+- Add gtk example (kobi Zamir)
 
 0.1.2 2005-08-28
 ----------------
