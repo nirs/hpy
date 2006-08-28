@@ -3,7 +3,7 @@
 
 __author__ = 'Nir Soffer <nirs@freeshell.org'
 __credits__ = 'Noam Raphael, Beni Cherniavksy'
-__version__ = '0.1.1'
+__version__ = '0.1.3'
 
 import codecs
 import token
@@ -74,13 +74,13 @@ def source(path):
     """ Translate Hebrew Python source at path """
     if DEBUG: 
         printTokens(codecs.open(path, 'r', 'utf-8').readline)
-    source = translate(codecs.open(path, 'r', 'utf-8').readline)
-    if DEBUG: 
-        print source
-    return source
+    return translate(codecs.open(path, 'r', 'utf-8').readline)
 
 def execute(path):
     """ Execute Hebrew Python source at path """
-    code = compile(source(path), path, 'exec')
+    translation= source(path)
+    if DEBUG: 
+        print translation
+    code = compile(translation, path, 'exec')
     sandbox = {}
     exec code in sandbox
