@@ -1,15 +1,36 @@
 #!/usr/bin/env python
 #-*- coding: utf-8 -*-
-"""Execute Hebrew Python scripts
+"""Execute and analize Hebrew Python scripts """
 
-usage: hpython FILE
-"""
-import sys
 import hpy
+from optparse import OptionParser
 
-if len(sys.argv) != 2:
-    print __doc__
-    sys.exit(1)
+# Parse options
+parser = OptionParser(usage='usage: %prog [options] FILE',
+                      version='%prog ' + hpy.__version__)
 
-hpy.execute(sys.argv[1])
+parser.add_option("-s", "--source",
+                  action="store_true", dest="source",
+                  help="show translated source")
 
+parser.add_option("-t", "--tokens",
+                  action="store_true", dest="tokens",
+                  help="show tokens in source")
+
+parser.set_defaults(source=False, tokens=False)
+
+options, args = parser.parse_args()
+
+# Validate args
+if len(args) != 1:
+    parser.error('no file specified')
+
+path = args[0]
+
+# Run
+if options.tokens:
+    hpy.printTokens(path)    
+if options.source:
+    print hpy.source(path)
+
+hpy.execute(path)
