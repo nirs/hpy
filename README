@@ -1,8 +1,6 @@
 Hebrew Python
 =============
 
-First release. Implementation based on idea by Noam Raphael.
-
 To write Hebrew scripts, see hpy/hebrew.py and the example scripts.
 
 Changes
@@ -11,15 +9,15 @@ Changes
 0.1.1 2005-08-28
 ----------------
 
-- Fix indentation bug
-- Mangle only non-ascii identifiers - this allows any standard python in hebrew python script
-- Add mix script using standard and hebrew python
-- Rename factorial the Hebrew name
-- Rename lambda keyword
-- Extract method source(path) from execute(path) (kobi zamir)
+- Fix indentation bug in tokenize
+- Mangle only non-ascii identifiers - allows using any existing identifier
+- Add mix example script
+- Improve hebrew keyword translation
+- Minor rafactorings
+- Rename of Hebrew files names to English (bzr unicode support problems)
 
 
 0.1 2006-08-27
 --------------
 
-Initial release.
+First release. Implementation based on idea by Noam Raphael.
