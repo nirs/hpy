@@ -1,9 +1,12 @@
 #-*= coding: utf-8 -*-
-""" Execute Hebrew Python scripts """
+""" Execute Hebrew Python scripts 
 
+@copyright: (c) 2006 by Nir Soffer <nirs@freeshell.org>
+@license: GNU GPL, see COPYING for details.
+"""
 __author__ = 'Nir Soffer <nirs@freeshell.org'
 __credits__ = 'Kobi Zamir, Noam Raphael, Beni Cherniavksy'
-__version__ = '0.1.3'
+__version__ = '0.2'
 
 import codecs
 import token

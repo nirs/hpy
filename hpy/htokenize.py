@@ -1,5 +1,8 @@
 """Tokenization help for Python programs.
 
+This is tokenize module from Python 2.4.3 with minor modification needed to
+support Hebrew tokens.
+
 generate_tokens(readline) is a generator that breaks a stream of
 text into Python tokens.  It accepts a readline-like method which is called
 repeatedly to get the next line of input (or "" for EOF).  It generates
@@ -22,7 +25,7 @@ are the same, except instead of generating tokens, tokeneater is a callback
 function to which the 5 fields described above are passed as 5 arguments,
 each time a new token is found.
 
-Hebrew names support by Nir Soffer <nirs@freeshell.org>
+@license: Python license.
 """
 
 __author__ = 'Ka-Ping Yee <ping@lfw.org>'
