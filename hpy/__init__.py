@@ -6,11 +6,15 @@
 """
 __author__ = 'Nir Soffer <nirs@freeshell.org'
 __credits__ = 'Kobi Zamir, Noam Raphael, Beni Cherniavksy'
-__version__ = '0.2'
+__version__ = '0.2.1'
 
 import codecs
 import token
-import cStringIO
+
+try:
+    from cStringIO import StringIO
+except ImportError:
+    from StringIO import StringIO
 
 from hpy import htokenize, hebrew
 
@@ -25,7 +29,7 @@ def mangle(s):
 
 def translate(readline):
     """ Translate HPython source to Python source """
-    result = cStringIO.StringIO()
+    result = StringIO()
     position = 0
     indent = ''
     newline = True
@@ -40,11 +44,11 @@ def translate(readline):
         # Handle indentation
         if type == token.NEWLINE:
             newline = True
-            result.write(string)
+            result.write(str(string))
             continue  
         elif type == token.INDENT:
             newline = False
-            indent = string
+            indent = str(string)
             result.write(indent)
             continue
         elif type == token.DEDENT:
@@ -61,7 +65,7 @@ def translate(readline):
             else:
                 result.write(mangle(string))
         else:
-            result.write(string.encode('utf-8'))        
+            result.write(string.encode('utf-8'))
                 
     return result.getvalue()
 
