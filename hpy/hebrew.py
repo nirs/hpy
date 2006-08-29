@@ -1,5 +1,9 @@
 #-*= coding: utf-8 -*-
-""" Hebrew data """
+""" Hebrew data 
+
+@copyright: (c) 2006 by Nir Soffer <nirs@freeshell.org>
+@license: GNU GPL, see COPYING for details.
+"""
 
 keywords = {u'וגם': 'and',
             u'מחק': 'del',
