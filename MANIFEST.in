@@ -1,0 +1,8 @@
+# Include
+include tests/test_*.py
+include COPYING
+include README
+recursive-include examples *
+
+# Exclude
+global-exclude .DS_Store
