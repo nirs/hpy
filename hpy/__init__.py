@@ -60,8 +60,8 @@ def translate(readline):
         
         # Handle other tokens
         if type == token.NAME:
-            if string in hebrew.keywords:
-                result.write(hebrew.keywords[string])
+            if string in hebrew.names:
+                result.write(hebrew.names[string])
             else:
                 result.write(mangle(string))
         else:
