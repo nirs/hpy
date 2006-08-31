@@ -42,21 +42,21 @@ def translate(readline, func):
         in htokenize.generate_tokens(readline):
         
         # Add missing whitespace before tokens
-        result.write(' ' * (scol - position))
+        result.write(u' ' * (scol - position))
         position = ecol
 
         # Handle indentation
         if type == token.NEWLINE:
             newline = True
-            result.write(str(string))
+            result.write(string)
             continue  
         elif type == token.INDENT:
             newline = False
-            indent = str(string)
+            indent = string
             result.write(indent)
             continue
         elif type == token.DEDENT:
-            indent = ' ' * ecol
+            indent = u' ' * ecol
             continue            
         elif newline:
             newline = False
@@ -66,13 +66,13 @@ def translate(readline, func):
         if type == token.NAME:
             result.write(func(string))
         else:
-            result.write(string.encode('utf-8'))
+            result.write(string)
                 
     return result.getvalue()
 
-def translateString(s):
+def translateString(s, func):
     readline = StringIO(s).readline
-    return translate(readline)
+    return translate(readline, func)
 
 def printTokens(path):
     """ Print tokens in Hebrew Python source """
