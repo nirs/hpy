@@ -31,7 +31,7 @@ def hebrewString(p):
     """ Return unicode string from mangaled string """
     return u'not implemented yet'
 
-def translate(readline):
+def translate(readline, func):
     """ Translate HPython source to Python source """
     result = StringIO()
     position = 0
@@ -64,7 +64,7 @@ def translate(readline):
         
         # Handle other tokens
         if type == token.NAME:
-            result.write(hebrewToPython(string))
+            result.write(func(string))
         else:
             result.write(string.encode('utf-8'))
                 
@@ -86,7 +86,7 @@ def printTokens(path):
 def source(path):
     """ Translate Hebrew Python source at path """
     readline = codecs.open(path, 'r', 'utf-8').readline
-    return translate(readline)
+    return translate(readline, pythonString)
 
 def execute(path):
     """ Execute Hebrew Python source at path """
