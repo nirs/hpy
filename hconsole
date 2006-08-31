@@ -2,7 +2,7 @@
 
 from code import *
 
-import hpy
+import hpy, sys
 
 class HConsole(InteractiveConsole):
     def runsource(self, src, *args, **kw):
