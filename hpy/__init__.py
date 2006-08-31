@@ -5,8 +5,8 @@
 @license: GNU GPL, see COPYING for details.
 """
 __author__ = 'Nir Soffer <nirs@freeshell.org'
-__credits__ = 'Kobi Zamir, Noam Raphael, Beni Cherniavksy'
-__version__ = '0.2.1'
+__credits__ = 'Amit Aronovitch, Kobi Zamir, Beni Cherniavksy, Noam Raphael'
+__version__ = '0.3'
 
 import codecs
 import token
