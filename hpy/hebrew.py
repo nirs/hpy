@@ -50,6 +50,28 @@ names = {
     u'הסר': 'remove',
     u'הפוך': 'reverse',
     u'מיין': 'sort',
+
+    # turtle module
+    u'צב': 'turtle',
+    u'מעלות': 'degrees',
+    u'רדיאן': 'radians',
+    u'אתחל': 'reset',
+    u'נקה': 'clear',
+    u'עוקב': 'tracer',
+    u'קדימה': 'forward',
+    u'אחורה': 'backward',
+    u'שמאלה': 'left',
+    u'ימינה': 'right',
+    u'מעלה': 'up',
+    u'מטה': 'down',
+    u'רוחב': 'width',
+    u'צבע': 'color',
+    u'כתוב': 'write',
+    u'מלא': 'fill',
+    u'מעגל': 'circle',
+    u'לך_אל': 'goto',
+    u'עט': 'Pen',
+    u'עט_בסיסי': 'RawPen'
     }
  
 # Generate hebrew character lists
