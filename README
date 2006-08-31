@@ -1,9 +1,13 @@
 Hebrew Python
 =============
 
-To run Hebrew Python script:
+To run Hebrew Python script::
 	
 	hpython FILE
+	
+To invoke the Hebrew Python interpreter::
+
+	hpython
 
 To write Hebrew scripts, see example scripts and hpy/hebrew.py.
 
@@ -15,7 +19,14 @@ Run python setup.py install
 Changes
 =======
 
-0.2 2005-08-29
+0.3 2006-08-31
+--------------
+
+- Interactive Hebrew Python interpreter
+- Translate turtle module
+- Bidirectional translation between Hebrew Python and Python source
+
+0.2 2006-08-29
 --------------
 
 - Standard installation
@@ -25,13 +36,13 @@ Changes
 - Add gtk example (kobi Zamir)
 - Add setup.py (Kobi Zamir)
 
-0.1.2 2005-08-28
+0.1.2 2006-08-28
 ----------------
 
 - Finally fix indentation in translate
 - Add 99 botles of beer example
 
-0.1.1 2005-08-28
+0.1.1 2006-08-28
 ----------------
 
 - Fix indentation bug in translate
