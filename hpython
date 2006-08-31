@@ -2,8 +2,25 @@
 #-*- coding: utf-8 -*-
 """Execute and analize Hebrew Python scripts """
 
-import hpy
 from optparse import OptionParser
+from code import InteractiveConsole
+
+import hpy
+
+class HebrewConsole(InteractiveConsole):
+    
+    def runsource(self, string, *args, **kw):
+        try:
+            # Terminal sends a byte string using some encoding.
+            # TODO: detect real terminal encoding
+            pystring = hpy.translateString(string.decode('utf8'),
+                                           hpy.pythonString)
+        # TODO: catch TokenError, turn into SyntaxError
+        except:
+            self.showtraceback()
+        else:
+           InteractiveConsole.runsource(self, pystring, *args, **kw)
+
 
 # Parse options
 parser = OptionParser(usage='usage: %prog [options] FILE',
@@ -21,16 +38,17 @@ parser.set_defaults(source=False, tokens=False)
 
 options, args = parser.parse_args()
 
-# Validate args
-if len(args) != 1:
-    parser.error('no file specified')
-
-path = args[0]
-
 # Run
-if options.tokens:
-    hpy.printTokens(path)    
-if options.source:
-    print hpy.source(path)
 
-hpy.execute(path)
+if len(args) > 1:
+    parser.error("too many files, I'm confused")
+elif len(args) == 1:
+    path = args[0]
+    if options.tokens:
+        hpy.printTokens(path)    
+    if options.source:
+        print hpy.source(path)
+    hpy.execute(path)
+else:    
+    HebrewConsole().interact()
+
