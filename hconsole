@@ -2,17 +2,20 @@
 
 from code import *
 
-import hpy, sys
+import hpy
 
 class HConsole(InteractiveConsole):
-    def runsource(self, src, *args, **kw):
+    def runsource(self, string, *args, **kw):
         try:
-            hsrc = hpy.translateString(src.decode('utf8'))
-        except Exception:
-            print >>sys.stderr, 'src:', src
+            # `string` is not unicode because it comes from the terminal
+            # TODO: detect real terminal encoding
+            pystring = hpy.translateString(string.decode('utf8'),
+                                           hpy.pythonString)
+        # TODO: catch TokenError, turn into SyntaxError
+        except:
             self.showtraceback()
         else:
-            InteractiveConsole.runsource(self, hsrc, *args, **kw)
+           InteractiveConsole.runsource(self, pystring, *args, **kw)
 
 def main():
     HConsole().interact()
