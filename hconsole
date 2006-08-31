@@ -6,10 +6,11 @@ import hpy
 
 class HConsole(InteractiveConsole):
     def runsource(self, src, *args, **kw):
-        InteractiveConsole.runsource(self, hpy.translateString(src), *args, **kw)
+        hsrc = hpy.translateString(src.decode('utf8'))
+        InteractiveConsole.runsource(self, hsrc, *args, **kw)
 
-def interact():
+def main():
     HConsole().interact()
 
 if __name__ == '__main__':
-    interact()
+    main()

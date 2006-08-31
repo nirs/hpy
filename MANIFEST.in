@@ -2,6 +2,7 @@
 include tests/test_*.py
 include COPYING
 include README
+recursive-include tools *
 recursive-include examples *
 
 # Exclude

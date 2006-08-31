@@ -11,10 +11,7 @@ __version__ = '0.2.1'
 import codecs
 import token
 
-try:
-    from cStringIO import StringIO
-except ImportError:
-    from StringIO import StringIO
+from StringIO import StringIO
 
 from hpy import htokenize, hebrew
 
@@ -60,14 +57,18 @@ def translate(readline):
         
         # Handle other tokens
         if type == token.NAME:
-            if string in hebrew.keywords:
-                result.write(hebrew.keywords[string])
+            if string in hebrew.names:
+                result.write(hebrew.names[string])
             else:
                 result.write(mangle(string))
         else:
             result.write(string.encode('utf-8'))
                 
     return result.getvalue()
+
+def translateString(s):
+    readline = StringIO(s).readline
+    return translate(readline)
 
 def printTokens(path):
     """ Print tokens in Hebrew Python source """
