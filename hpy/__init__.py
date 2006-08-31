@@ -15,16 +15,31 @@ from StringIO import StringIO
 
 from hpy import htokenize, hebrew
 
-def mangle(s):
+prefix = 'hpy_'
+
+def pythonString(s):
     """ Return ASCII safe name for non ASCII identifier 
     e.g. פריט ==> hpy_d7a4d7a8d799d798
     """
-    try:
-        return s.encode('ascii')
-    except UnicodeEncodeError:
-        return 'hpy_' + s.encode('utf-8').encode('hex')
+    if s in hebrew.pythonNames:
+        return hebrew.pythonNames[s]
+    else:
+        try:
+            return s.encode('ascii')
+        except UnicodeEncodeError:
+            return prefix + s.encode('utf-8').encode('hex')
 
-def translate(readline):
+def hebrewString(pythonString):
+    """ Return unicode string from mangaled string """
+    if pythonString in hebrew.hebrewNames:
+        return hebrew.hebrewNames[pythonString]
+    else:
+        if pythonString.startswith(prefix):
+            return pythonString[4:].decode('hex').decode('utf-8')
+        else:
+            return pythonString
+
+def translate(readline, func):
     """ Translate HPython source to Python source """
     result = StringIO()
     position = 0
@@ -35,21 +50,21 @@ def translate(readline):
         in htokenize.generate_tokens(readline):
         
         # Add missing whitespace before tokens
-        result.write(' ' * (scol - position))
+        result.write(u' ' * (scol - position))
         position = ecol
 
         # Handle indentation
         if type == token.NEWLINE:
             newline = True
-            result.write(str(string))
+            result.write(string)
             continue  
         elif type == token.INDENT:
             newline = False
-            indent = str(string)
+            indent = string
             result.write(indent)
             continue
         elif type == token.DEDENT:
-            indent = ' ' * ecol
+            indent = u' ' * ecol
             continue            
         elif newline:
             newline = False
@@ -57,18 +72,15 @@ def translate(readline):
         
         # Handle other tokens
         if type == token.NAME:
-            if string in hebrew.names:
-                result.write(hebrew.names[string])
-            else:
-                result.write(mangle(string))
+            result.write(func(string))
         else:
-            result.write(string.encode('utf-8'))
+            result.write(string)
                 
     return result.getvalue()
 
-def translateString(s):
+def translateString(s, func):
     readline = StringIO(s).readline
-    return translate(readline)
+    return translate(readline, func)
 
 def printTokens(path):
     """ Print tokens in Hebrew Python source """
@@ -82,7 +94,7 @@ def printTokens(path):
 def source(path):
     """ Translate Hebrew Python source at path """
     readline = codecs.open(path, 'r', 'utf-8').readline
-    return translate(readline)
+    return translate(readline, pythonString)
 
 def execute(path):
     """ Execute Hebrew Python source at path """
