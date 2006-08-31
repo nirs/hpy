@@ -15,14 +15,21 @@ from StringIO import StringIO
 
 from hpy import htokenize, hebrew
 
-def mangle(s):
+def encodeNAME(s):
     """ Return ASCII safe name for non ASCII identifier 
     e.g. פריט ==> hpy_d7a4d7a8d799d798
     """
-    try:
-        return s.encode('ascii')
-    except UnicodeEncodeError:
-        return 'hpy_' + s.encode('utf-8').encode('hex')
+    if s in hebrew.names:
+        return hebrew.names[s]
+    else:
+        try:
+            return s.encode('ascii')
+        except UnicodeEncodeError:
+            return 'hpy_' + s.encode('utf-8').encode('hex')
+
+def decodeNAME(s):
+    """ Return unicode string from mangaled string """
+    return u'not implemented yet'
 
 def translate(readline):
     """ Translate HPython source to Python source """
@@ -57,10 +64,7 @@ def translate(readline):
         
         # Handle other tokens
         if type == token.NAME:
-            if string in hebrew.names:
-                result.write(hebrew.names[string])
-            else:
-                result.write(mangle(string))
+            result.write(encodeNAME(string))
         else:
             result.write(string.encode('utf-8'))
                 
