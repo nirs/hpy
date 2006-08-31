@@ -5,7 +5,11 @@
 @license: GNU GPL, see COPYING for details.
 """
 
-names = {
+class DuplicateTranslationError(Exception):
+    """" Raised when 2 hebrew names translated to same Python name """    
+
+# Used to translate from Hebrew to Python
+pythonNames = {
     # Keywords
     u'וגם': 'and',
     u'מחק': 'del',
@@ -71,8 +75,15 @@ names = {
     u'מעגל': 'circle',
     u'לך_אל': 'goto',
     u'עט': 'Pen',
-    u'עט_בסיסי': 'RawPen'
+    u'עט_בסיסי': 'RawPen',
     }
+
+# Create reversed map for reversed translation
+hebrewNames = {}
+for key, value in pythonNames.items():
+    if value in hebrewNames:
+        raise DuplicateTranslationError('duplicate translation for %s' % key)
+    hebrewNames[value] = key
  
 # Generate hebrew character lists
 # see http://www.unicode.org/charts/PDF/U0590.pdf

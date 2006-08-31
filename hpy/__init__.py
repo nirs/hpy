@@ -15,21 +15,29 @@ from StringIO import StringIO
 
 from hpy import htokenize, hebrew
 
+prefix = 'hpy_'
+
 def pythonString(s):
     """ Return ASCII safe name for non ASCII identifier 
     e.g. פריט ==> hpy_d7a4d7a8d799d798
     """
-    if s in hebrew.names:
-        return hebrew.names[s]
+    if s in hebrew.pythonNames:
+        return hebrew.pythonNames[s]
     else:
         try:
             return s.encode('ascii')
         except UnicodeEncodeError:
-            return 'hpy_' + s.encode('utf-8').encode('hex')
+            return prefix + s.encode('utf-8').encode('hex')
 
-def hebrewString(p):
+def hebrewString(pythonString):
     """ Return unicode string from mangaled string """
-    return u'not implemented yet'
+    if pythonString in hebrew.hebrewNames:
+        return hebrew.hebrewNames[pythonString]
+    else:
+        if pythonString.startswith(prefix):
+            return pythonString[4:].decode('hex').decode('utf-8')
+        else:
+            return pythonString
 
 def translate(readline, func):
     """ Translate HPython source to Python source """
