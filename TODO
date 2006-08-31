@@ -1,0 +1,6 @@
+- Fix multiline in the console
+- translate tracebacks
+- Editor save translated files, translate to hebrew for editing
+- interactive help
+- GUI
+- Basic docs 
