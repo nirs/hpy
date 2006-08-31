@@ -10,7 +10,6 @@ class HConsole(InteractiveConsole):
             hsrc = hpy.translateString(src.decode('utf8'))
         except Exception:
             print >>sys.stderr, 'src:', src
-            print >>sys.stderr, 'hsrc:', hsrc
             self.showtraceback()
         else:
             InteractiveConsole.runsource(self, hsrc, *args, **kw)
