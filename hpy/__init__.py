@@ -15,7 +15,7 @@ from StringIO import StringIO
 
 from hpy import htokenize, hebrew
 
-def encodeNAME(s):
+def pythonString(s):
     """ Return ASCII safe name for non ASCII identifier 
     e.g. פריט ==> hpy_d7a4d7a8d799d798
     """
@@ -27,7 +27,7 @@ def encodeNAME(s):
         except UnicodeEncodeError:
             return 'hpy_' + s.encode('utf-8').encode('hex')
 
-def decodeNAME(s):
+def hebrewString(p):
     """ Return unicode string from mangaled string """
     return u'not implemented yet'
 
@@ -64,7 +64,7 @@ def translate(readline):
         
         # Handle other tokens
         if type == token.NAME:
-            result.write(encodeNAME(string))
+            result.write(hebrewToPython(string))
         else:
             result.write(string.encode('utf-8'))
                 
