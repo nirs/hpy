@@ -6,7 +6,10 @@ import hpy
 
 class HConsole(InteractiveConsole):
     def runsource(self, src, *args, **kw):
-        hsrc = hpy.translateString(src.decode('utf8'))
+        try:
+            hsrc = hpy.translateString(src.decode('utf8'))
+        except Exception:
+            self.showtraceback()
         InteractiveConsole.runsource(self, hsrc, *args, **kw)
 
 def main():
