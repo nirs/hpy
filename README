@@ -21,7 +21,7 @@ Run python setup.py install
 Changes
 =======
 
-0.3.1 2006-09-02
+0.3.1 2006-09-03
 ----------------
 
 - Fixed interactive interpreter to support multiline input
@@ -29,11 +29,13 @@ Changes
   - Added empty lines to examples so they all work when supplied as stdin 
     to interactive hpython
 
+- Added 2 recursive turtle examples
+
 0.3 2006-08-31
 --------------
 
 - Interactive Hebrew Python interpreter
-- Translate turtle module
+- Translate turtle module, add few examples
 - Bidirectional translation between Hebrew Python and Python source
 
 0.2 2006-08-29

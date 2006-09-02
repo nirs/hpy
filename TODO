@@ -1,8 +1,14 @@
-- translate tracebacks
-- Editor save translated files, translate to hebrew for editing
-
+- use cases from:
+  - teachers
+  - programming courses for children or beginners
+  - BotsInc - http://smallwiki.unibe.ch/botsinc/
+- tests
+- tracebacks
+- editor save standard Python, translate to hebrew for editing
   - Find solution to translating code with lexical errors
-
 - interactive help
 - GUI
-- Basic docs 
+- basic language docs
+- tutorial
+- add missing functions in turtle: demo, window_height/width
+- remove/translate the junk written when starting a console
