@@ -23,7 +23,7 @@ Changes
 --------------
 
 - Interactive Hebrew Python interpreter
-- Translate turtle module
+- Translate turtle module, add few examples
 - Bidirectional translation between Hebrew Python and Python source
 
 0.2 2006-08-29
