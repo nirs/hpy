@@ -4,8 +4,12 @@
 
 from optparse import OptionParser
 from code import InteractiveConsole
+try:
+    import readline
+except ImportError:
+    pass
 
-import hpy
+import hpy, tokenize
 
 class HebrewConsole(InteractiveConsole):
     
@@ -15,12 +19,20 @@ class HebrewConsole(InteractiveConsole):
             # TODO: detect real terminal encoding
             pystring = hpy.translateString(string.decode('utf8'),
                                            hpy.pythonString)
-        # TODO: catch TokenError, turn into SyntaxError
+        except (tokenize.TokenError, hpy.htokenize.TokenError), e:
+            # XXX dirty hack
+            if e.args[0] == 'EOF in multi-line string':
+                return True  # incomple input
+            print string
+            self.showsyntaxerror()
+        except SystemExit:
+            raise
         except:
+            print 'INTERNAL HPYTHON ERROR:'
             self.showtraceback()
         else:
-           InteractiveConsole.runsource(self, pystring, *args, **kw)
-
+            # return value is important for incomplete commands
+            return InteractiveConsole.runsource(self, pystring, *args, **kw)
 
 # Parse options
 parser = OptionParser(usage='usage: %prog [options] FILE',
@@ -51,4 +63,3 @@ elif len(args) == 1:
     hpy.execute(path)
 else:    
     HebrewConsole().interact()
-

@@ -11,6 +11,8 @@ To invoke the Hebrew Python interpreter::
 
 To write Hebrew scripts, see example scripts and hpy/hebrew.py.
 
+Note: presently hpython assumes UTF-8 on input!
+
 Install
 =======
 
@@ -18,6 +20,14 @@ Run python setup.py install
 
 Changes
 =======
+
+0.3.1 2006-09-02
+----------------
+
+- Fixed interactive interpreter to support multiline input
+
+  - Added empty lines to examples so they all work when supplied as stdin 
+    to interactive hpython
 
 0.3 2006-08-31
 --------------

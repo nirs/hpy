@@ -1,6 +1,8 @@
-- Fix multiline in the console
 - translate tracebacks
 - Editor save translated files, translate to hebrew for editing
+
+  - Find solution to translating code with lexical errors
+
 - interactive help
 - GUI
 - Basic docs 
