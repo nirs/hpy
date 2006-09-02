@@ -1,6 +1,14 @@
-- Fix multiline in the console
-- translate tracebacks
-- Editor save translated files, translate to hebrew for editing
+- use cases from:
+  - teachers
+  - programming courses for children or beginners
+  - botinc
+- tests
+- tracebacks
+- multiline in the console
+- editor save standard Python, translate to hebrew for editing
 - interactive help
 - GUI
-- Basic docs 
+- basic language docs
+- tutorial
+- add missing functions in turtle: demo, window_height/width
+- remove the junk written when starting a console
