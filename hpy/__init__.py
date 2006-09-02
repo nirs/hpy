@@ -6,7 +6,7 @@
 """
 __author__ = 'Nir Soffer <nirs@freeshell.org'
 __credits__ = 'Amit Aronovitch, Kobi Zamir, Beni Cherniavksy, Noam Raphael'
-__version__ = '0.3'
+__version__ = '0.3.1'
 
 import codecs
 import token
