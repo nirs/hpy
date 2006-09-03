@@ -1,11 +1,23 @@
 0.3
 ===
 
-- tests - require tests for new code
+Complete tests:
+- hpy
+  - add more python modules
+- hebrew
+- htokenize
+- interactive console
+
+Bugs:
+- indent addition on empty line
+  test_tree (tests.test_hpy.hebrew_round_trip)
+- continued lines loose indent
+  test_token_to_python (tests.test_hpy.python_modules)
 
 0.4
 ===
 
+- require tests for new code
 - use cases from:
   - teachers
   - programming courses for children or beginners
