@@ -1,8 +1,15 @@
+0.3
+===
+
+- tests - require tests for new code
+
+0.4
+===
+
 - use cases from:
   - teachers
   - programming courses for children or beginners
   - BotsInc - http://smallwiki.unibe.ch/botsinc/
-- tests
 - tracebacks
 - editor save standard Python, translate to hebrew for editing
   - Find solution to translating code with lexical errors
@@ -11,4 +18,4 @@
 - basic language docs
 - tutorial
 - add missing functions in turtle: demo, window_height/width
-- remove/translate the junk written when starting a console
+- remove non interesting details from console startup text, translate Python version, Hebrew Python version, help line, console name
