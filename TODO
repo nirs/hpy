@@ -14,6 +14,12 @@ Bugs:
 - continued lines loose indent
   test_token_to_python (tests.test_hpy.python_modules)
 
+Open Isues:
+- how to provide Hebrew module names for warpper modules
+  - compile to hpy_xxx names - makes modules names unreadable, require addding the Hebrew name in the .hpy file, and parsing it when compiling the file
+  - register Hebrew names on startup?
+  - don't provide Hebrew name, load modules automatically at startup
+  
 0.4
 ===
 
