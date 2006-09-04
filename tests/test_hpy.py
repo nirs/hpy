@@ -85,7 +85,7 @@ class hebrew_round_trip(unittest.TestCase):
         self.assertEqual(a, b, diff(a, b))
 
     def read(self, module):
-        path = 'examples/%s.py' % module
+        path = 'examples/%s.hpy' % module
         return codecs.open(path, 'rb', 'utf-8').read()
 
 
