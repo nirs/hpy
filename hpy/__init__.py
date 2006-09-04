@@ -10,6 +10,7 @@ __version__ = '0.3'
 
 import codecs
 import token
+import os
 
 from StringIO import StringIO
 
@@ -83,7 +84,7 @@ def translateString(s, func):
     return translate(readline, func)
 
 def printTokens(path):
-    """ Print tokens in Hebrew Python source """
+    """ Print tokens in Hebrew Python module """
     readline = codecs.open(path, 'r', 'utf-8').readline
     for (type, string, (srow, scol), (erow, ecol), line) \
         in htokenize.generate_tokens(readline):
@@ -92,12 +93,30 @@ def printTokens(path):
                                      string.encode('utf-8'))
 
 def source(path):
-    """ Translate Hebrew Python source at path """
+    """ Translate Hebrew Python module at path """
     readline = codecs.open(path, 'r', 'utf-8').readline
     return translate(readline, pythonString)
 
 def execute(path):
-    """ Execute Hebrew Python source at path """
+    """ Execute Hebrew Python module at path """
     code = compile(source(path), path, 'exec')
     sandbox = {}
     exec code in sandbox
+
+def compileModule(path):
+    """ Compile Hebrew Python module to standard Python module
+
+    Raise ValueError if path looks like a Python module, becuase it will
+    overwrite the source.
+    """
+    base, extension = os.path.splitext(path)
+    if extension == '.py':
+        raise ValueError('compiling Python module will overwrite the source.') 
+    python = source(path)
+    file = base + '.py'
+    f = codecs.open(file, 'wb', 'utf-8')
+    try:
+        f.write(python)
+    finally:
+        f.close()
+    

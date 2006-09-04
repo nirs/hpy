@@ -1,4 +1,7 @@
 #-*- coding: utf-8 -*-
+import os
+import tempfile
+import shutil
 import unittest
 import difflib
 import codecs
@@ -124,8 +127,36 @@ class python_modules(unittest.TestCase):
         path = m.__file__.replace('.pyc', '.py')
         return codecs.open(path, 'rb', 'ascii').read()
 
- 
 
+class compile_module(unittest.TestCase):
+
+    hebrew = u'''הדפס "שלום עולם!"'''
+    python = u'''print "שלום עולם!"'''
+    
+    def setUp(self):
+        self.dir = tempfile.mkdtemp()
+        self.hebrew_file = os.path.join(self.dir, 'hello.hpy')
+        self.python_file = os.path.join(self.dir, 'hello.py')
+        f = codecs.open(self.hebrew_file, 'wb', 'utf-8')
+        f.write(self.hebrew)
+        f.close()
+
+    def tearDown(self):
+        shutil.rmtree(self.dir, ignore_errors=1)
+
+    def test_save_as_python_module(self):
+        hpy.compileModule(self.hebrew_file)
+        self.assert_(os.path.exists(self.python_file))
+    
+    def test_translate_to_python(self):
+        hpy.compileModule(self.hebrew_file)
+        python = codecs.open(self.python_file, 'rb', 'utf-8').read()
+        self.assertEqual(python, self.python)
+        
+    def test_raise_if_python_module(self):
+        self.assertRaises(ValueError, hpy.compileModule, self.python_file)
+        
+        
 # Helper functions
 
 def to_python(s):
@@ -138,4 +169,4 @@ def diff(a, b):
     diff = difflib.unified_diff(a.splitlines(), b.splitlines())
     return '\n'.join(diff).encode('utf-8')
 
-      
+

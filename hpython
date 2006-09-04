@@ -46,7 +46,11 @@ parser.add_option("-t", "--tokens",
                   action="store_true", dest="tokens",
                   help="show tokens in source")
 
-parser.set_defaults(source=False, tokens=False)
+parser.add_option("-c", "--compile",
+                  action="store_true", dest="compile",
+                  help="compile hpy module to python module")
+
+parser.set_defaults(source=False, tokens=False, compile=False)
 
 options, args = parser.parse_args()
 
@@ -60,6 +64,10 @@ elif len(args) == 1:
         hpy.printTokens(path)    
     if options.source:
         print hpy.source(path)
-    hpy.execute(path)
+
+    if options.compile:
+        hpy.compileModule(path)
+    else:
+        hpy.execute(path)
 else:    
     HebrewConsole().interact()
