@@ -36,6 +36,7 @@ Changes
 - Examples can be used as input to interactive hpython
 - Hebrew turtle module (צב) and few example scripts
 - Bidirectional translation between Hebrew Python and Python source
+- Compile Hebrew Python modules to Python modules
 
 0.2 2006-08-29
 --------------
