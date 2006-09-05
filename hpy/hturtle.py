@@ -3,7 +3,7 @@
 
 import turtle
 
-# Map Hebrew color names to TK color names
+# מפוי לצבעים המוגדרים על ידי TK
 hpy_d7a6d791d7a2d799d79d = {
 u'אדום': 'red',
 u'ירוק': 'green',
@@ -58,13 +58,15 @@ def hpy_d7a2d795d791d799(hpy_d7a8d795d797d791):
     """קבע את עובי העט"""
     turtle.width(hpy_d7a8d795d797d791)
     
-def hpy_d7a6d791d7a2(hpy_d7a6d791d7a2):
-    """שנה את צבע העט"""
-    turtle.color(hpy_d7a6d791d7a2d799d79d[hpy_d7a6d791d7a2])
+def hpy_d7a6d791d7a2(*hpy_d790d7a8d792):
+    """שנה את צבע העט. 
     
-def hpy_d7a6d791d7a2(hpy_d790d793d795d79d, hpy_d799d7a8d795d7a7, hpy_d79bd797d795d79c):
-    """שנה את צבע העט לפי חלקים מהאחד של אדום, ירוק וכחול"""
-    turtle.color(hpy_d790d793d795d79d, hpy_d799d7a8d795d7a7, hpy_d79bd797d795d79c)
+    ארג יכול להיות אחד מהצבעים המוגדרים במילון צבעים, או טפל המכיל
+    שלושה מספרים בין אפס לאחד, לפי הסדר אדום, ירוק וכחול. 
+    """
+    if len(hpy_d790d7a8d792) == 1 and hpy_d790d7a8d792[0] in hpy_d7a6d791d7a2d799d79d:
+        hpy_d790d7a8d792 = (hpy_d7a6d791d7a2d799d79d[hpy_d790d7a8d792[0]],)
+    turtle.color(*hpy_d790d7a8d792)
     
 def hpy_d79bd7aad795d791(hpy_d79ed79cd79c):
     """כתוב טקסט על לוח הציור"""
