@@ -12,5 +12,5 @@ setup (name = 'hpy',
        download_url = 'http://nirs.freeshell.org/hpy/hpy-%s.tar.gz' % hpy.__version__,
        author = 'Nir Soffer',
        author_email = 'nirs@freeshell.org',
-       packages = ["hpy",""],
+       packages = ["hpy"],
        scripts = ["hpython","hpython"])
