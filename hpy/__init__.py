@@ -85,7 +85,7 @@ def translateString(s, func):
 
 def printTokens(path):
     """ Print tokens in Hebrew Python module """
-    readline = codecs.open(path, 'r', 'utf-8').readline
+    readline = codecs.open(path, 'rU', 'utf-8').readline
     for (type, string, (srow, scol), (erow, ecol), line) \
         in htokenize.generate_tokens(readline):
         name = token.tok_name[type]
@@ -94,7 +94,7 @@ def printTokens(path):
 
 def source(path):
     """ Translate Hebrew Python module at path """
-    readline = codecs.open(path, 'r', 'utf-8').readline
+    readline = codecs.open(path, 'rU', 'utf-8').readline
     return translate(readline, pythonString)
 
 def execute(path):
