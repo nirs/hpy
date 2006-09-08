@@ -37,7 +37,7 @@ pythonNames = {
     u'או': 'or',        
     u'כלעוד': 'while', # XXX כל_עוד?
     u'המשך': 'continue',  
-    u'הפעל': 'exec',      
+    u'בצע': 'exec',      
     u'יבא': 'import',    
     u'עבור': 'pass',      
     u'צור': 'yield',    
