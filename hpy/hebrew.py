@@ -9,15 +9,20 @@ class DuplicateTranslationError(Exception):
     """" Raised when 2 hebrew names translated to same Python name """    
 
 # Used to translate from Hebrew to Python
+# XXX check translation at the http://hebrew-terms.huji.ac.il/
+
 pythonNames = {
+    
     # Keywords
+    # http://docs.python.org/ref/keywords.html
+      
     u'וגם': 'and',
     u'מחק': 'del',
     u'לכל': 'for',
     u'הוא': 'is',
     u'זרוק': 'raise',    
     u'ודא': 'assert',
-    u'אחרתאם': 'elif',      
+    u'אחרתאם': 'elif', # XXX אחרת_אם?
     u'מתוך': 'from',      
     u'למדה': 'lambda',    
     u'החזר': 'return',   
@@ -30,7 +35,7 @@ pythonNames = {
     u'תפוס': 'except',    
     u'אם': 'if',        
     u'או': 'or',        
-    u'כלעוד': 'while',    
+    u'כלעוד': 'while', # XXX כל_עוד?
     u'המשך': 'continue',  
     u'הפעל': 'exec',      
     u'יבא': 'import',    
@@ -40,6 +45,10 @@ pythonNames = {
     u'לבסוף': 'finally',   
     u'בתוך': 'in',        
     u'הדפס': 'print',
+
+    # In some future version of Python, will both become keywords:
+    u'בתור': 'as', # מתוך פו יבא בר בתור בז
+    u'כלום': 'None', # אם א הוא כלום
     
     # Builtins
     u'אמת': 'True',
